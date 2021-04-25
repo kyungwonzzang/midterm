@@ -1,3 +1,6 @@
 env/
 .vscode/
 list.py
+dictionary.py
+def.py
+hello.py
