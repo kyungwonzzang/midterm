@@ -1,7 +1,7 @@
 #리스트, 딕셔너리, 함수 등을 추가해서 업데이트
 import sys
 item = ["비어있음"]
-ability = { "대나무 헬리콥터" : "하늘을 날아 이동할 수 있다.", "공기포" : "근접에서 사용시 상대방을 제압할수있다.",
+ability = { "대나무 헬리콥터" : "하늘을 날아 이동할 수 있다.", "공기포" : "전투에서 사용시 상대방을 제압할수있다.",
             "단팥빵" : "먹으면 hp를 30 회복한다."}
 def 대나무헬리콥터():
     print("대나무 헬리콥터로 빠르게 이동합니다.")
@@ -32,6 +32,7 @@ num1 = int(input("선택: "))
 print("")
 
 if num1 == 1:
+    print("퉁퉁이가 방심을 했다.")
     print("퉁퉁이에게 이겼다 야호!!")
     print("")
 elif num1 == 2:
@@ -78,19 +79,56 @@ if num2 == 1:
     print("20의 피해를 입었다. 현재 ( HP",nowhp,")")
     print("")
 
+    if nowhp <= 0:
+        print("HP가 0 이하로 떨어져 게임오버!!")
+        sys.exit()
+
+    print("퉁퉁이와 싸워야합니다.")
+    num3 = int(input("1.맨몸으로 싸운다.   2.도구를 사용한다. : "))
+    print("")
+
+    if num3 == 1:
+        print("퉁퉁이에게 두들겨 맞았습니다.")
+        nowhp = nowhp - 30
+        print("30의 피해를 입었다. 현재 (HP",nowhp,")")
+        print("")
+
+        if nowhp <= 0:
+            print("HP가 0 이하로 떨어져 게임오버!!")
+            sys.exit()
+        
+        print("퉁퉁이와 싸워야 합니다.")
+
+        num4 = int(input("1.맨몸으로 싸운다.   2.도구를 사용한다. : "))
+        print("")
+
+        if num4 == 1:
+            print("퉁퉁이에게 다시 한번 두들겨 맞았습니다.")
+            nowhp = nowhp - 50
+            print("50의 피해를 입었다. 현재 (HP",nowhp,")")
+            print("")
+
+            if nowhp <= 0:
+                print("HP가 0 이하로 떨어져 게임오버!!")
+                sys.exit()
+
+        elif num4 == 2:
+            print("맞아보니 도구를 써야한다는걸 알았습니다.")
+            print("")
+
     print("아이템을 사용하세요.")
     print("내 아이템 : ",item[1:])
     print("")
 
-    action3 = input("사용할 아이템 입력 : ")
-    if action3 == "대나무 헬리콥터":
+    action4 = input("사용할 아이템 입력 : ")
+    if action4 == "대나무 헬리콥터":
         대나무헬리콥터()
         print("")
 
         print("대나무 헬리콥터를 이용해 날아가려다 퉁퉁이에게 붙잡혀서 게임오버")
         sys.exit()
     
-    elif action3 == "공기포":
+    elif action4 == "공기포":
         공기포()
         print("퉁퉁이에게 이겼다 야호!!")
         print("")
@@ -109,17 +147,17 @@ if num2 == 1:
 
         print("")
         print("집에서 무엇을 할까요")
-        num3 = int(input("1.잠을 잔다.  2.단팥빵을 먹고 잔다. : "))
+        num5 = int(input("1.잠을 잔다.  2.단팥빵을 먹고 잔다. : "))
         print("")
 
-        if num3 == 1:
+        if num5 == 1:
             print("현재 체력 ( hp",nowhp,")")
             print("잠을 잡니다.")
             print("")
 
             print("도라에몽 게임 1일차 CLAER!!!")
 
-        elif num3 == 2:
+        elif num5 == 2:
             단팥빵()
             nowhp = nowhp + 30
             print("현재 체력 ( hp",nowhp,")")
